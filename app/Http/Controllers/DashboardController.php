@@ -8,9 +8,11 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     public function index ($user) {
-        $user = User::find($user);
+
+        $user = User::findOrFail($user);
         return view('dashboard', [
             'user' => $user,
         ]);
     }
+    
 }
