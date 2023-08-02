@@ -2,12 +2,12 @@
 
        <div class="container">
          <div class="row">
-            <div class="col-md-3 p-5">
+            <div class="col-md-3">
                 <img src="/Melanie.png" alt="PROFILE PHOTO" style="height: 220px; width: 200px;" class="rounded-circle">
             </div>
             <div class="col-md-9 pt-5">
              <div class="d-flex justify-content-between align-items-baseline">
-                <h1>{{ $user->username }}</h1>
+                <h1 style="font-size: 28px;">{{ $user->username }}</h1>
                 <a href="#">Add New Post</a>
             </div>
                 <div class="d-flex">
