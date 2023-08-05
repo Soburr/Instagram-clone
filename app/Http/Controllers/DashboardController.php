@@ -15,4 +15,13 @@ class DashboardController extends Controller
         ]);
     }
 
+    public function edit ($user) {
+        $user = User::findOrFail($user);
+        return view('dashboard.edit', [
+            'user' => $user,
+        ]);
+    }
+
+    
+
 }

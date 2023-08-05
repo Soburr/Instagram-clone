@@ -20,11 +20,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', 'App\Http\Controllers\DashboardController@example')->name('dashboard');
 
-Route::get('/dashboard/{user}', 'App\Http\Controllers\DashboardController@index')->middleware(['auth', 'verified'])->name('dashboard.show');
+Route::get('/dashboard/{user}', 'App\Http\Controllers\DashboardController@index')->name('dashboard.show');
+
+Route::get('/dashboard/{user}/edit', 'App\Http\Controllers\DashboardController@edit')->name('dashboard.edit');
+
+Route::patch('/dashboard/{user}', 'App\Http\Controllers\DashboardController@update')->name('dashboard.update');
 
 Route::get('/p/create', 'App\Http\Controllers\PostController@create');
+
+Route::get('/p/{post}', 'App\Http\Controllers\PostController@show');
 
 Route::post('/p', 'App\Http\Controllers\PostController@store');
 
