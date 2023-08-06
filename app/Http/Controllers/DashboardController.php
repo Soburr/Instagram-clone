@@ -22,6 +22,16 @@ class DashboardController extends Controller
         ]);
     }
 
-    
+    public function update (User $user) {
+        $validatedData = request()->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'url' => '',
+            'image' => '',
+        ]);
+
+        $user->dashboard->update($validatedData);
+        return redirect("/dashboard/{$user->id}");
+    }
 
 }
