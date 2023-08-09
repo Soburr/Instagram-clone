@@ -8,9 +8,17 @@
             <div class="col-md-9 pt-5">
              <div class="d-flex justify-content-between align-items-baseline">
                 <h1 style="font-size: 28px;">{{ $user->username }}</h1>
+
+             @can ('update', $user->dashboard)
                 <a href="/p/create">Add New Post</a>
+             @endcan
+
              </div>
-                <a href="/dashboard/{{ $user->id }}/edit">Edit Profile</a>
+
+                 @can ('update', $user->dashboard)
+                    <a href="/dashboard/{{ $user->id }}/edit">Edit Profile</a>
+                 @endcan
+
                 <div class="d-flex">
                     <div class="pr-4"><strong class="pr-1">{{ $user->posts->count() }}</strong>posts</div>
                     <div class="pr-4"><strong class="pr-1">23k</strong>followers</div>
@@ -23,7 +31,7 @@
                     <p>{{ $user->dashboard->description }}</p>
                 </div>
                 <div class="pt-1">
-                    <a href="#">www.{{ $user->dashboard->url ?? N/A}}</a>
+                    <a href="#">{{ $user->dashboard->url }}</a>
                 </div>
             </div>
          </div>

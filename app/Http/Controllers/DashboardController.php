@@ -15,22 +15,27 @@ class DashboardController extends Controller
         ]);
     }
 
-    public function edit ($user) {
-        $user = User::findOrFail($user);
+    public function edit (User $user) {
+
+        $this->authorize('update', $user->dashboard);
+
         return view('dashboard.edit', [
             'user' => $user,
         ]);
     }
 
     public function update (User $user) {
+
+        $this->authorize('update', $user->dashboard);
+
         $validatedData = request()->validate([
             'title' => 'required',
             'description' => 'required',
-            'url' => '',
+            'url' => 'url',
             'image' => '',
         ]);
 
-        $user->dashboard->update($validatedData);
+        auth()->user()->dashboard->update($validatedData);
         return redirect("/dashboard/{$user->id}");
     }
 

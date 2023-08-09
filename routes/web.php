@@ -22,7 +22,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', 'App\Http\Controllers\DashboardController@example')->name('dashboard');
 
-Route::get('/dashboard/{user}', 'App\Http\Controllers\DashboardController@index')->name('dashboard.show');
+Route::get('/dashboard/{user}', 'App\Http\Controllers\DashboardController@index')->middleware(['auth'])->name('dashboard.show');
 
 Route::get('/dashboard/{user}/edit', 'App\Http\Controllers\DashboardController@edit')->name('dashboard.edit');
 
@@ -30,9 +30,9 @@ Route::patch('/dashboard/{user}', 'App\Http\Controllers\DashboardController@upda
 
 Route::get('/p/create', 'App\Http\Controllers\PostController@create');
 
-Route::get('/p/{post}', 'App\Http\Controllers\PostController@show');
-
 Route::post('/p', 'App\Http\Controllers\PostController@store');
+
+Route::get('/p/{post}', 'App\Http\Controllers\PostController@show');
 
 
 require __DIR__.'/auth.php';
