@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class DashboardController extends Controller
 {
@@ -35,7 +36,17 @@ class DashboardController extends Controller
             'image' => '',
         ]);
 
-        auth()->user()->dashboard->update($validatedData);
+        if(request('image')) {
+
+            $imagePath = request('image')->store('profile', 'public');
+            $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
+            $image->save();
+        }
+
+        auth()->user()->dashboard->update(array_merge(
+            $validatedData,
+            ['image' => $imagePath ]
+        ));
         return redirect("/dashboard/{$user->id}");
     }
 

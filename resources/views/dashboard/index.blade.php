@@ -3,7 +3,7 @@
        <div class="container">
          <div class="row">
             <div class="col-md-3 pt-10 pb-10">
-                <img src="/Melanie.png" alt="PROFILE PHOTO" style="height: 220px; width: 200px;" class="rounded-circle">
+                <img src="/storage/{{ $user->dashboard->image }}" alt="PROFILE PHOTO" class="rounded-circle w-100">
             </div>
             <div class="col-md-9 pt-5">
              <div class="d-flex justify-content-between align-items-baseline">
