@@ -11,6 +11,11 @@ class Dashboard extends Model
 
     protected $guarded = [];
 
+    public function profileImage () {
+        $imagePath = ($this->image) ? '/storage/' . $this->image : 'https://ui-avatars.com';
+        return $imagePath;
+    }
+
     public function user() {
         return $this->belongsTo(User::class);
     }

@@ -3,11 +3,17 @@
        <div class="container">
          <div class="row">
             <div class="col-md-3 pt-10 pb-10">
-                <img src="/storage/{{ $user->dashboard->image }}" alt="PROFILE PHOTO" class="rounded-circle w-100">
+                <img src="{{ $user->dashboard->profileImage() }}" alt="PROFILE PHOTO" class="rounded-circle w-100">
             </div>
             <div class="col-md-9 pt-5">
              <div class="d-flex justify-content-between align-items-baseline">
-                <h1 style="font-size: 28px;">{{ $user->username }}</h1>
+
+                <div class="d-flex align-items-center pb-3">
+                    <div style="font-size: 28px;" class="h4">{{ $user->username }}</div>
+
+                  <livewire:follow-user>
+
+                </div>
 
              @can ('update', $user->dashboard)
                 <a href="/p/create">Add New Post</a>

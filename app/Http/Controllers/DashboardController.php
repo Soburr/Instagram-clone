@@ -41,11 +41,12 @@ class DashboardController extends Controller
             $imagePath = request('image')->store('profile', 'public');
             $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
             $image->save();
+            $imageArray = ['image' => $imagePath ];
         }
 
         auth()->user()->dashboard->update(array_merge(
             $validatedData,
-            ['image' => $imagePath ]
+            $imageArray ?? []
         ));
         return redirect("/dashboard/{$user->id}");
     }
