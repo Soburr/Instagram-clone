@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PostController;
+use App\Http\Livewire\FollowUser;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +34,8 @@ Route::get('/p/create', 'App\Http\Controllers\PostController@create');
 Route::post('/p', 'App\Http\Controllers\PostController@store');
 
 Route::get('/p/{post}', 'App\Http\Controllers\PostController@show');
+
+Route::get('/follow-user/{user}', FollowUser::class);
 
 
 require __DIR__.'/auth.php';

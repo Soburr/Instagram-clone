@@ -11,7 +11,9 @@
                 <div class="d-flex align-items-center pb-3">
                     <div style="font-size: 28px;" class="h4">{{ $user->username }}</div>
 
-                  <livewire:follow-user>
+                @foreach ($users as $user)
+                    <livewire:follow-user :user="$user" :key="$user->id" />
+                @endforeach
 
                 </div>
 

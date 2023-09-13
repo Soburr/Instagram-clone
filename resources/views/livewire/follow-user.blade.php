@@ -4,7 +4,7 @@
     }
 </style>
 
-<div x-data="{ isFollowing: true}">
-    <button class="btn btn-success" x-on:click="isFollowing = true" x-show="!isFollowing" x-cloak>Follow</button>
-    <button class="btn btn-primary" x-on:click="isFollowing = !isFollowing" x-show="isFollowing" x-cloak>Unfollow</button>
+<div x-data="{ following: {{ $user->isFollowing(Auth::user()) ? 'true' : 'false' }} }" class="ml-3 mb-2">
+    <button class="btn btn-success" wire-click="follow({{ $user->id }})" x-show="!following" x-cloak>Follow</button>
+    <button class="btn btn-primary" wire-click="unfollow({{ $user->id }})" x-show="following" x-cloak>Unfollow</button>
 </div>
