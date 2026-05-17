@@ -65,27 +65,42 @@ Clone the repository:
 
 ```bash
 git clone https://github.com/Soburr/your-repo-name.git
+```
 
-Navigate into the project directory:     
+Navigate into the project directory:
+```bash   
 cd your-repo-name
-
+```
 Install backend dependencies:
+```bash
 composer install
+```
 
 Install frontend dependencies:
+```bash
 npm install
+```
 
 Create environment file:
+```bash
 cp .env.example .env
+```
 
 Generate application key:
+```bash
 php artisan key:generate
+```
 
 Run migrations:
+```bash
 php artisan migrate
+```
 
 Start development server:
+```bash
 php artisan serve
+```
 
 Run frontend build:
+```bash
 npm run dev
